@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL;
-$Net::Async::Webservice::DHL::VERSION = '0.01_1';
+$Net::Async::Webservice::DHL::VERSION = '0.01_2';
 {
   $Net::Async::Webservice::DHL::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -240,34 +240,19 @@ sub xml_request {
             );
 
             if ($response_doc->documentElement->nodeName =~ /:DCTResponse$/) {
-                return Future->wrap($response_doc);
+                my $reader = $self->_xml_cache->reader('{http://www.dhl.com}DCTResponse');
+                my $response = $reader->($response_doc);
+                return Future->wrap($response);
             }
             else {
-                return Future->new->fail($response_doc);
+                my $reader = $self->_xml_cache->reader('{http://www.dhl.com}ErrorResponse');
+                my $response = $reader->($response_doc);
+                return Future->new->fail(
+                    Net::Async::Webservice::DHL::Exception::DHLError->new({
+                        error => $response->{Response}{Status}
+                    }),
+                );
             }
-        }
-    )->then(
-        sub {
-            my ($response_doc) = @_;
-
-            my $reader = $self->_xml_cache->reader('{http://www.dhl.com}DCTResponse');
-
-            my $response = $reader->($response_doc);
-
-            return Future->wrap($response);
-        }
-    )->else(
-        sub {
-            my ($response_doc) = @_;
-
-            my $reader = $self->_xml_cache->reader('{http://www.dhl.com}ErrorResponse');
-            my $response = $reader->($response_doc);
-
-            return Future->new->fail(
-                Net::Async::Webservice::DHL::Exception::DHLError->new({
-                    error => $response->{Response}{Status}
-                }),
-            );
         }
     );
 }
@@ -293,7 +278,7 @@ sub post {
             )
         },
         fail => sub {
-            my ($exception,undef,$response,$request) = @_;
+            my ($exception,undef,$response) = @_;
             return Net::Async::Webservice::DHL::Exception::HTTPError->new({
                 request=>$request,
                 response=>$response,
@@ -316,7 +301,7 @@ Net::Async::Webservice::DHL - DHL API client, non-blocking
 
 =head1 VERSION
 
-version 0.01_1
+version 0.01_2
 
 =head1 SYNOPSIS
 

@@ -59,4 +59,4 @@ requires:
   warnings: '0'
 resources:
   repository: git://github.com/NET-A-PORTER/Net-Async-Webservice-DHL.git
-version: 0.01_1
+version: 0.01_2

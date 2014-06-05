@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::SyncAgentWrapper;
-$Net::Async::Webservice::DHL::SyncAgentWrapper::VERSION = '0.01_1';
+$Net::Async::Webservice::DHL::SyncAgentWrapper::VERSION = '0.01_2';
 {
   $Net::Async::Webservice::DHL::SyncAgentWrapper::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -25,7 +25,7 @@ sub do_request {
 
     my $response = $self->ua->request($request);
     if ($fail && ! $response->is_success) {
-        return Future->new->fail($response);
+        return Future->new->fail($response->status_line,'http',$response,$request);
     }
     return Future->wrap($response);
 }
@@ -47,7 +47,7 @@ Net::Async::Webservice::DHL::SyncAgentWrapper - minimal wrapper to adapt a sync 
 
 =head1 VERSION
 
-version 0.01_1
+version 0.01_2
 
 =head1 DESCRIPTION
 

@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL;
-$Net::Async::Webservice::DHL::VERSION = '0.01_2';
+$Net::Async::Webservice::DHL::VERSION = '0.01_3';
 {
   $Net::Async::Webservice::DHL::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -23,7 +23,7 @@ use namespace::autoclean;
 use Future;
 use DateTime;
 use File::ShareDir::ProjectDistDir 'dist_dir', strict => 1;
-use 5.10.0;
+use 5.010;
 
 # ABSTRACT: DHL API client, non-blocking
 
@@ -251,6 +251,7 @@ sub xml_request {
                     Net::Async::Webservice::DHL::Exception::DHLError->new({
                         error => $response->{Response}{Status}
                     }),
+                    'dhl',
                 );
             }
         }
@@ -279,10 +280,10 @@ sub post {
         },
         fail => sub {
             my ($exception,undef,$response) = @_;
-            return Net::Async::Webservice::DHL::Exception::HTTPError->new({
+            return (Net::Async::Webservice::DHL::Exception::HTTPError->new({
                 request=>$request,
                 response=>$response,
-            })
+            }),'dhl');
         },
     );
 }
@@ -301,7 +302,7 @@ Net::Async::Webservice::DHL - DHL API client, non-blocking
 
 =head1 VERSION
 
-version 0.01_2
+version 0.01_3
 
 =head1 SYNOPSIS
 

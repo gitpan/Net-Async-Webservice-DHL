@@ -1,10 +1,10 @@
 package Net::Async::Webservice::DHL::Address;
-$Net::Async::Webservice::DHL::Address::VERSION = '0.01_2';
+$Net::Async::Webservice::DHL::Address::VERSION = '0.01_3';
 {
   $Net::Async::Webservice::DHL::Address::DIST = 'Net-Async-Webservice-DHL';
 }
 use Moo;
-use 5.10.0;
+use 5.010;
 use Types::Standard qw(Str Int Bool StrictNum);
 use Net::Async::Webservice::DHL::Types ':types';
 
@@ -64,7 +64,7 @@ Net::Async::Webservice::DHL::Address - an address for DHL
 
 =head1 VERSION
 
-version 0.01_2
+version 0.01_3
 
 =head1 ATTRIBUTES
 

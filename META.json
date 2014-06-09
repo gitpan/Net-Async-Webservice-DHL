@@ -42,6 +42,7 @@
          "requires" : {
             "Config::Any" : "0",
             "DateTime" : "0",
+            "DateTime::Format::ISO8601" : "0",
             "Encode" : "0",
             "Error::TypeTiny" : "0",
             "File::ShareDir::ProjectDistDir" : "0",
@@ -63,7 +64,7 @@
             "XML::LibXML" : "0",
             "namespace::autoclean" : "0",
             "overload" : "0",
-            "perl" : "v5.10.0",
+            "perl" : "5.010",
             "strict" : "0",
             "warnings" : "0"
          }
@@ -97,6 +98,6 @@
          "web" : "https://github.com/NET-A-PORTER/Net-Async-Webservice-DHL"
       }
    },
-   "version" : "0.01_2"
+   "version" : "0.01_3"
 }
 

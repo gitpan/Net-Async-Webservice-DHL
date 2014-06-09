@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::SyncAgentWrapper;
-$Net::Async::Webservice::DHL::SyncAgentWrapper::VERSION = '0.01_2';
+$Net::Async::Webservice::DHL::SyncAgentWrapper::VERSION = '0.01_3';
 {
   $Net::Async::Webservice::DHL::SyncAgentWrapper::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -47,7 +47,7 @@ Net::Async::Webservice::DHL::SyncAgentWrapper - minimal wrapper to adapt a sync 
 
 =head1 VERSION
 
-version 0.01_2
+version 0.01_3
 
 =head1 DESCRIPTION
 

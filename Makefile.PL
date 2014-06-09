@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use 5.010000;
+use 5.010;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -22,6 +22,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Config::Any" => 0,
     "DateTime" => 0,
+    "DateTime::Format::ISO8601" => 0,
     "Encode" => 0,
     "Error::TypeTiny" => 0,
     "File::ShareDir::ProjectDistDir" => 0,
@@ -59,7 +60,7 @@ my %WriteMakefileArgs = (
     "XML::Simple" => 0,
     "lib" => 0
   },
-  "VERSION" => "0.01_2",
+  "VERSION" => "0.01_3",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -71,6 +72,7 @@ my %FallbackPrereqs = (
   "Data::Printer" => 0,
   "Data::Visitor::Callback" => 0,
   "DateTime" => 0,
+  "DateTime::Format::ISO8601" => 0,
   "Encode" => 0,
   "Error::TypeTiny" => 0,
   "File::ShareDir::ProjectDistDir" => 0,

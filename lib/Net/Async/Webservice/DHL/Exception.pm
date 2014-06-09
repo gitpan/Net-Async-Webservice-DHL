@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::Exception;
-$Net::Async::Webservice::DHL::Exception::VERSION = '0.01_2';
+$Net::Async::Webservice::DHL::Exception::VERSION = '0.01_3';
 {
   $Net::Async::Webservice::DHL::Exception::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -28,7 +28,7 @@ around _build_stack_trace_args => sub {
 sub as_string { "something bad happened at ". $_[0]->stack_trace->as_string }
 
 {package Net::Async::Webservice::DHL::Exception::ConfigError;
-$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_2';
+$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_3';
 {
   $Net::Async::Webservice::DHL::Exception::ConfigError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -49,7 +49,7 @@ $Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_2';
 }
 
 {package Net::Async::Webservice::DHL::Exception::HTTPError;
-$Net::Async::Webservice::DHL::Exception::HTTPError::VERSION = '0.01_2';
+$Net::Async::Webservice::DHL::Exception::HTTPError::VERSION = '0.01_3';
 {
   $Net::Async::Webservice::DHL::Exception::HTTPError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -73,7 +73,7 @@ $Net::Async::Webservice::DHL::Exception::HTTPError::VERSION = '0.01_2';
 }
 
 {package Net::Async::Webservice::DHL::Exception::DHLError;
-$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '0.01_2';
+$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '0.01_3';
 {
   $Net::Async::Webservice::DHL::Exception::DHLError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -110,7 +110,7 @@ Net::Async::Webservice::DHL::Exception
 
 =head1 VERSION
 
-version 0.01_2
+version 0.01_3
 
 =head1 DESCRIPTION
 

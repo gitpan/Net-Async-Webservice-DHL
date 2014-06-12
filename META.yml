@@ -16,6 +16,7 @@ build_requires:
   lib: '0'
 configure_requires:
   ExtUtils::MakeMaker: '6.30'
+  File::ShareDir::Install: '0.06'
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.140640'
 license: perl
@@ -60,4 +61,4 @@ requires:
   warnings: '0'
 resources:
   repository: git://github.com/NET-A-PORTER/Net-Async-Webservice-DHL.git
-version: 0.01_3
+version: 0.01_5

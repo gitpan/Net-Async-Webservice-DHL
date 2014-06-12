@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL;
-$Net::Async::Webservice::DHL::VERSION = '0.01_3';
+$Net::Async::Webservice::DHL::VERSION = '0.01_5';
 {
   $Net::Async::Webservice::DHL::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -279,10 +279,11 @@ sub post {
             )
         },
         fail => sub {
-            my ($exception,undef,$response) = @_;
+            my ($exception,$kind,$response) = @_;
             return (Net::Async::Webservice::DHL::Exception::HTTPError->new({
                 request=>$request,
                 response=>$response,
+                (($kind//'') ne 'http' ? ( more_info => "@_" ) : ()),
             }),'dhl');
         },
     );
@@ -302,7 +303,7 @@ Net::Async::Webservice::DHL - DHL API client, non-blocking
 
 =head1 VERSION
 
-version 0.01_3
+version 0.01_5
 
 =head1 SYNOPSIS
 

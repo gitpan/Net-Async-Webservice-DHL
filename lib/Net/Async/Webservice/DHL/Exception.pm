@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::Exception;
-$Net::Async::Webservice::DHL::Exception::VERSION = '0.01_3';
+$Net::Async::Webservice::DHL::Exception::VERSION = '0.01_5';
 {
   $Net::Async::Webservice::DHL::Exception::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -28,7 +28,7 @@ around _build_stack_trace_args => sub {
 sub as_string { "something bad happened at ". $_[0]->stack_trace->as_string }
 
 {package Net::Async::Webservice::DHL::Exception::ConfigError;
-$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_3';
+$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_5';
 {
   $Net::Async::Webservice::DHL::Exception::ConfigError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -49,7 +49,7 @@ $Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_3';
 }
 
 {package Net::Async::Webservice::DHL::Exception::HTTPError;
-$Net::Async::Webservice::DHL::Exception::HTTPError::VERSION = '0.01_3';
+$Net::Async::Webservice::DHL::Exception::HTTPError::VERSION = '0.01_5';
 {
   $Net::Async::Webservice::DHL::Exception::HTTPError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -60,20 +60,22 @@ $Net::Async::Webservice::DHL::Exception::HTTPError::VERSION = '0.01_3';
 
  has request => ( is => 'ro', required => 1 );
  has response => ( is => 'ro', required => 1 );
+ has more_info => ( is => 'ro', default => '' );
 
 
  sub as_string {
      my ($self) = @_;
 
-     return sprintf 'Error %sing %s: %s, at %s',
+     return sprintf 'Error %sing %s: %s %s, at %s',
          $self->request->method,$self->request->uri,
          (try {$self->response->status_line} catch {'no response'}),
+         $self->more_info,
          $self->stack_trace->as_string;
  }
 }
 
 {package Net::Async::Webservice::DHL::Exception::DHLError;
-$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '0.01_3';
+$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '0.01_5';
 {
   $Net::Async::Webservice::DHL::Exception::DHLError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -110,7 +112,7 @@ Net::Async::Webservice::DHL::Exception
 
 =head1 VERSION
 
-version 0.01_3
+version 0.01_5
 
 =head1 DESCRIPTION
 

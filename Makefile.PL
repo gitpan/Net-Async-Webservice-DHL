@@ -7,13 +7,18 @@ use 5.010;
 
 use ExtUtils::MakeMaker 6.30;
 
+use File::ShareDir::Install;
+$File::ShareDir::Install::INCLUDE_DOTFILES = 1;
+$File::ShareDir::Install::INCLUDE_DOTDIRS = 1;
+install_share dist => "share\/dist\/Net\-Async\-Webservice\-DHL";
 
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "DHL API client, non-blocking",
   "AUTHOR" => "Gianni Ceccarelli <gianni.ceccarelli\@net-a-porter.com>",
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30"
+    "ExtUtils::MakeMaker" => "6.30",
+    "File::ShareDir::Install" => "0.06"
   },
   "DISTNAME" => "Net-Async-Webservice-DHL",
   "EXE_FILES" => [],
@@ -60,7 +65,7 @@ my %WriteMakefileArgs = (
     "XML::Simple" => 0,
     "lib" => 0
   },
-  "VERSION" => "0.01_3",
+  "VERSION" => "0.01_5",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -119,5 +124,10 @@ delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
 
 WriteMakefile(%WriteMakefileArgs);
 
+{
+package
+MY;
+use File::ShareDir::Install qw(postamble);
+}
 
 

@@ -18,7 +18,6 @@ my @files = (
     'lib/Net/Async/Webservice/DHL.pm',
     'lib/Net/Async/Webservice/DHL/Address.pm',
     'lib/Net/Async/Webservice/DHL/Exception.pm',
-    'lib/Net/Async/Webservice/DHL/SyncAgentWrapper.pm',
     'lib/Net/Async/Webservice/DHL/Types.pm'
 );
 

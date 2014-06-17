@@ -1,39 +1,18 @@
 package Net::Async::Webservice::DHL::Exception;
-$Net::Async::Webservice::DHL::Exception::VERSION = '0.01_5';
+$Net::Async::Webservice::DHL::Exception::VERSION = '0.01_6';
 {
   $Net::Async::Webservice::DHL::Exception::DIST = 'Net-Async-Webservice-DHL';
 }
-use Moo;
-with 'Throwable','StackTrace::Auto';
-use overload
-  q{""}    => 'as_string',
-  fallback => 1;
+use strict;
 
-
-around _build_stack_trace_args => sub {
-    my ($orig,$self) = @_;
-
-    my $ret = $self->$orig();
-    push @$ret, (
-        no_refs => 1,
-        respect_overload => 1,
-        message => '',
-        indent => 1,
-    );
-
-    return $ret;
-};
-
-
-sub as_string { "something bad happened at ". $_[0]->stack_trace->as_string }
 
 {package Net::Async::Webservice::DHL::Exception::ConfigError;
-$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_5';
+$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_6';
 {
   $Net::Async::Webservice::DHL::Exception::ConfigError::DIST = 'Net-Async-Webservice-DHL';
 }
  use Moo;
- extends 'Net::Async::Webservice::DHL::Exception';
+ extends 'Net::Async::Webservice::Common::Exception';
 
 
  has file => ( is => 'ro', required => 1 );
@@ -48,39 +27,13 @@ $Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_5';
  }
 }
 
-{package Net::Async::Webservice::DHL::Exception::HTTPError;
-$Net::Async::Webservice::DHL::Exception::HTTPError::VERSION = '0.01_5';
-{
-  $Net::Async::Webservice::DHL::Exception::HTTPError::DIST = 'Net-Async-Webservice-DHL';
-}
- use Moo;
- extends 'Net::Async::Webservice::DHL::Exception';
- use Try::Tiny;
-
-
- has request => ( is => 'ro', required => 1 );
- has response => ( is => 'ro', required => 1 );
- has more_info => ( is => 'ro', default => '' );
-
-
- sub as_string {
-     my ($self) = @_;
-
-     return sprintf 'Error %sing %s: %s %s, at %s',
-         $self->request->method,$self->request->uri,
-         (try {$self->response->status_line} catch {'no response'}),
-         $self->more_info,
-         $self->stack_trace->as_string;
- }
-}
-
 {package Net::Async::Webservice::DHL::Exception::DHLError;
-$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '0.01_5';
+$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '0.01_6';
 {
   $Net::Async::Webservice::DHL::Exception::DHLError::DIST = 'Net-Async-Webservice-DHL';
 }
  use Moo;
- extends 'Net::Async::Webservice::DHL::Exception';
+ extends 'Net::Async::Webservice::Common::Exception';
 
 
  has error => ( is => 'ro', required => 1 );
@@ -112,29 +65,20 @@ Net::Async::Webservice::DHL::Exception
 
 =head1 VERSION
 
-version 0.01_5
+version 0.01_6
 
 =head1 DESCRIPTION
 
 These classes are based on L<Throwable> and L<StackTrace::Auto>. The
 L</as_string> method should return something readable, with a full
-stack trace.
+stack trace.  Their base class is
+L<Net::Async::Webservice::Common::Exception>.
 
 =head1 NAME
 
 Net::Async::Webservice::DHL::Exception - exception classes for DHL
 
 =head1 Classes
-
-=head2 C<Net::Async::Webservice::DHL::Exception>
-
-Base class.
-
-=head3 Methods
-
-=head4 C<as_string>
-
-Generic "something bad happened", with stack trace.
 
 =head2 C<Net::Async::Webservice::DHL::Exception::ConfigError>
 
@@ -151,26 +95,6 @@ The name of the configuration file.
 =head4 C<as_string>
 
 Mentions the file name, and gives the stack trace.
-
-=head2 C<Net::Async::Webservice::DHL::Exception::HTTPError>
-
-exception thrown when the HTTP request fails
-
-=head3 Attributes
-
-=head4 C<request>
-
-The request that failed.
-
-=head4 C<response>
-
-The failure response returned by the user agent
-
-=head3 Methods
-
-=head4 C<as_string>
-
-Mentions the HTTP method, URL, response status line, and stack trace.
 
 =head2 C<Net::Async::Webservice::DHL::Exception::DHLError>
 

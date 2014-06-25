@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::Types;
-$Net::Async::Webservice::DHL::Types::VERSION = '0.01_6';
+$Net::Async::Webservice::DHL::Types::VERSION = '1.0.0';
 {
   $Net::Async::Webservice::DHL::Types::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -31,7 +31,7 @@ Net::Async::Webservice::DHL::Types - type library for DHL
 
 =head1 VERSION
 
-version 0.01_6
+version 1.0.0
 
 =head1 DESCRIPTION
 

@@ -34,6 +34,7 @@ my %WriteMakefileArgs = (
     "HTTP::Request" => 0,
     "List::AllUtils" => 0,
     "Moo" => 0,
+    "Net::Async::Webservice::Common" => 0,
     "Try::Tiny" => 0,
     "Type::Library" => 0,
     "Type::Params" => 0,
@@ -68,7 +69,7 @@ my %WriteMakefileArgs = (
     "lib" => 0,
     "overload" => 0
   },
-  "VERSION" => "0.01_6",
+  "VERSION" => "1.0.0",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -94,6 +95,7 @@ my %FallbackPrereqs = (
   "List::AllUtils" => 0,
   "Moo" => 0,
   "Moo::Role" => 0,
+  "Net::Async::Webservice::Common" => 0,
   "Scalar::Util" => 0,
   "StackTrace::Auto" => 0,
   "Test::Deep" => 0,

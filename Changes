@@ -1,3 +1,6 @@
+1.0.0     2014-06-25 11:21:06+01:00 Europe/London
+ - first non-dev release
+
 0.01_6    2014-06-17 17:06:14+01:00 Europe/London
  - no need for Task::Weaken
  - migrate to Net::Async::Webservice::Common (not yet released, so

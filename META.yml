@@ -49,6 +49,7 @@ requires:
   HTTP::Request: '0'
   List::AllUtils: '0'
   Moo: '0'
+  Net::Async::Webservice::Common: '0'
   Try::Tiny: '0'
   Type::Library: '0'
   Type::Params: '0'
@@ -64,4 +65,4 @@ requires:
   warnings: '0'
 resources:
   repository: git://github.com/NET-A-PORTER/Net-Async-Webservice-DHL.git
-version: 0.01_6
+version: 1.0.0

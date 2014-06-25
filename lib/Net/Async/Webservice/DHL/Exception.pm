@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::Exception;
-$Net::Async::Webservice::DHL::Exception::VERSION = '0.01_6';
+$Net::Async::Webservice::DHL::Exception::VERSION = '1.0.0';
 {
   $Net::Async::Webservice::DHL::Exception::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -7,7 +7,7 @@ use strict;
 
 
 {package Net::Async::Webservice::DHL::Exception::ConfigError;
-$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_6';
+$Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '1.0.0';
 {
   $Net::Async::Webservice::DHL::Exception::ConfigError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -28,7 +28,7 @@ $Net::Async::Webservice::DHL::Exception::ConfigError::VERSION = '0.01_6';
 }
 
 {package Net::Async::Webservice::DHL::Exception::DHLError;
-$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '0.01_6';
+$Net::Async::Webservice::DHL::Exception::DHLError::VERSION = '1.0.0';
 {
   $Net::Async::Webservice::DHL::Exception::DHLError::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -65,7 +65,7 @@ Net::Async::Webservice::DHL::Exception
 
 =head1 VERSION
 
-version 0.01_6
+version 1.0.0
 
 =head1 DESCRIPTION
 

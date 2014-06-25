@@ -33,6 +33,7 @@ t/lib/Test/Net/Async/Webservice/DHL/Factory.pm
 t/lib/Test/Net/Async/Webservice/DHL/NoNetwork.pm
 t/lib/Test/Net/Async/Webservice/DHL/Tracing.pm
 t/release-no-tabs.t
+t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/xml-schema.t
 weaver.ini

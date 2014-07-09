@@ -18,6 +18,7 @@ share/dist/Net-Async-Webservice-DHL/datatypes.xsd
 share/dist/Net-Async-Webservice-DHL/err-res.xsd
 t/data/address
 t/data/address-bad
+t/data/address-productcode
 t/dhl-live-sync.t
 t/dhl-live.t
 t/dhl-offline.t

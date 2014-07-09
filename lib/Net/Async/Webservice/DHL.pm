@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL;
-$Net::Async::Webservice::DHL::VERSION = '1.0.0';
+$Net::Async::Webservice::DHL::VERSION = '1.1.0';
 {
   $Net::Async::Webservice::DHL::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -110,9 +110,9 @@ sub get_capability {
             from => Address,
             to => Address,
             is_dutiable => Bool,
-            product_code => Str,
             currency_code => Str,
             shipment_value => Num,
+            product_code => Optional[Str],
             date => Optional[DateTimeT->plus_coercions(DTFormat['ISO8601'])],
         ],
     );
@@ -133,6 +133,14 @@ sub get_capability {
             WeightUnit => 'KG',
             IsDutiable => ($args->{is_dutiable} ? 'Y' : 'N'),
             NetworkTypeCode => 'AL',
+            ( defined $args->{product_code} ? (
+                QtdShp => {
+                    GlobalProductCode => $args->{product_code},
+                    QtdShpExChrg => {
+                        SpecialServiceType => 'OSINFO',
+                    },
+                },
+            ) : () ),
         },
         Dutiable => {
             DeclaredCurrency => $args->{currency_code},
@@ -236,7 +244,7 @@ Net::Async::Webservice::DHL - DHL API client, non-blocking
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 
@@ -255,7 +263,6 @@ version 1.0.0
    from => $address_a,
    to => $address_b,
    is_dutiable => 0,
-   product_code => 'N',
    currency_code => 'GBP',
    shipment_value => 100,
  })->then(sub {
@@ -280,7 +287,6 @@ Alternatively:
    from => $address_a,
    to => $address_b,
    is_dutiable => 0,
-   product_code => 'N',
    currency_code => 'GBP',
    shipment_value => 100,
  })->get;
@@ -375,14 +381,12 @@ a path name; will be parsed with L<Config::Any>, and the values used as if they 
    from => $address_a,
    to => $address_b,
    is_dutiable => 0,
-   product_code => 'N',
    currency_code => 'GBP',
    shipment_value => 100,
  }) ==> ($hashref)
 
 C<from> and C<to> are instances of
-L<Net::Async::Webservice::DHL::Address>, C<is_dutiable> is a boolean,
-C<product_code> is a DHL product code.
+L<Net::Async::Webservice::DHL::Address>, C<is_dutiable> is a boolean.
 
 Optional parameters:
 
@@ -391,6 +395,10 @@ Optional parameters:
 =item C<date>
 
 the date/time for the booking, defaults to I<now>; it will converted to UTC time zone
+
+=item C<product_code>
+
+a DHL product code
 
 =back
 

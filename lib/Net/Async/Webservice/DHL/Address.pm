@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::Address;
-$Net::Async::Webservice::DHL::Address::VERSION = '1.1.0';
+$Net::Async::Webservice::DHL::Address::VERSION = '1.1.1';
 {
   $Net::Async::Webservice::DHL::Address::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -64,7 +64,7 @@ Net::Async::Webservice::DHL::Address - an address for DHL
 
 =head1 VERSION
 
-version 1.1.0
+version 1.1.1
 
 =head1 ATTRIBUTES
 

@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL;
-$Net::Async::Webservice::DHL::VERSION = '1.1.0';
+$Net::Async::Webservice::DHL::VERSION = '1.1.1';
 {
   $Net::Async::Webservice::DHL::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -244,7 +244,7 @@ Net::Async::Webservice::DHL - DHL API client, non-blocking
 
 =head1 VERSION
 
-version 1.1.0
+version 1.1.1
 
 =head1 SYNOPSIS
 

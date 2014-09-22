@@ -1,5 +1,5 @@
 package Net::Async::Webservice::DHL::Types;
-$Net::Async::Webservice::DHL::Types::VERSION = '1.1.1';
+$Net::Async::Webservice::DHL::Types::VERSION = '1.2.0';
 {
   $Net::Async::Webservice::DHL::Types::DIST = 'Net-Async-Webservice-DHL';
 }
@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use Type::Library
     -base,
-    -declare => qw( Address );
+    -declare => qw( Address RouteType CountryCode RegionCode );
 use Type::Utils -all;
 use Types::Standard -types;
 use namespace::autoclean;
@@ -16,6 +16,12 @@ use namespace::autoclean;
 
 
 class_type Address, { class => 'Net::Async::Webservice::DHL::Address' };
+
+enum RouteType, [qw(O D)];
+
+declare CountryCode, as Str, where { length($_) == 2 };
+
+enum RegionCode, [qw(AP EU AM)];
 
 1;
 
@@ -31,7 +37,7 @@ Net::Async::Webservice::DHL::Types - type library for DHL
 
 =head1 VERSION
 
-version 1.1.1
+version 1.2.0
 
 =head1 DESCRIPTION
 
